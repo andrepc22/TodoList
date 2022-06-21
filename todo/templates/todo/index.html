@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 
 {% block header %}
-<h1>{% block title %}Todos{% endblock %}</h1>
+<h1>{% block title %}Tus Tareas{% endblock %}</h1>
+	<a class='action' href="{{ url_for('todo.move') }}">Reordena</a>
 	{% if g.user %}
-		<a class='action' href="{{ url_for('todo.create') }}">Nuevo</a>
+		<a class='action' href="{{ url_for('todo.create') }}">Nueva</a>
 	{% endif %}
 {% endblock %}
 
@@ -15,7 +16,7 @@
 		<div>
 			<h1>
 				{% if todo['completed'] == 1 %}
-				<strike>{{ todo['description'] }}</strike>
+				<del>{{ todo['description'] }}</del>
 				{% else %}
 				{{ todo['description'] }}
 				{% endif%}
@@ -25,7 +26,6 @@
 		</div>
 	</li>
 	{% if not loop.last %}
-		<hr>
 	{% endif%}
 	{% endfor %}
 </ul>

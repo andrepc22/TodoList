@@ -17,7 +17,9 @@ instructions = [
             created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
             description TEXT NOT NULL,
             completed BOOLEAN NOT NULL,
-            FOREIGN KEY (created_by) REFERENCES user (id)
+            FOREIGN KEY (created_by) REFERENCES user (id),
+            id_user INT NOT NULL DEFAULT '0',
+            display_order INT NOT NULL DEFAULT '0'
         );
     """
 ]

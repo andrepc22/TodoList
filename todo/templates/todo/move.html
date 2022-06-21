@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block header %}
+	<h1>{% block title %}Reordena{% endblock %}</h1>
+{% endblock %}
+
+
+{% block content %}
+<ul class='sortable'>
+	{% for todo in todos %}
+		{% if todo['completed'] == 0 %}
+			<li id="{{ todo['display_order'] }}" class="todomove" draggable='true'>
+				<div>
+					<h1>
+						{{ todo['description'] }}
+					</h1>
+					<div>
+						{{ todo['display_order'] }}
+					</div>
+				</div>
+			</li>
+		{% endif%}
+	{% if not loop.last %}
+	{% endif%}
+	{% endfor %}
+</ul>
+{% endblock %}

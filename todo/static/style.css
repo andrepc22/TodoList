@@ -1,0 +1,194 @@
+body {
+	font-family: 'Nunito', sans-serif;
+	background-color: #f5f5f5;
+	margin: 0 0;
+}
+
+/*----------------------HEADER----------------------------*/
+
+nav {
+	overflow: hidden;
+	text-align: center;
+	margin: 0 0;
+	padding-left: 20px;
+}
+
+nav h1 {
+	float: left;
+	color: rgba(11, 84, 199, 0.86);
+}
+
+nav ul {
+	padding: 20px 0;
+	float: right;
+	background-color: rgba(228,7,49,255);
+	box-shadow: 1px 1px 8px rgba(0,0,0,0.7);
+}
+
+ul {
+	padding: 0 0;
+	list-style-type: none;
+	margin: 0 0;
+}
+
+nav ul li {
+	display: inline;
+	transition: 0.3s;
+	margin: 0;
+}
+
+nav ul li a{
+	padding: 20px;
+	transition: 0.3s;
+}
+
+nav ul li a:hover {
+	cursor: pointer;
+	background-color: rgb(185, 22, 70);
+}
+
+nav ul li a{
+	text-decoration: none;
+	color: white;
+}
+
+nav ul li span {
+	padding: 20px;
+	background-color: white;
+	color: rgba(228,7,49,255);
+}
+
+
+/*------------------------LOGIN-REGISTER-----------------------*/
+
+legend {
+	border-radius: 5px;
+	color: white;
+	padding: 10px 15px;
+	background-color: rgba(11, 84, 199, 0.86);
+	width: auto;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 15px;
+}
+
+fieldset {
+	margin: auto;
+	margin-top: 10%;
+	width: 300px;
+	height: 270px;
+	border-radius: 5px;
+	background-color: white;
+	box-shadow: 0px 5px 10px rgba(0,0,0,0.5);
+	border: 0.5px solid rgba(11, 84, 199, 0.86);
+	border: none;
+}
+
+legend h1 {
+	margin: 0;
+}
+
+form {
+	position: relative;
+}
+
+fieldset label {
+	/*display: relative;*/
+	margin-left: 64px;
+	/*margin-bottom: 10px;*/
+}
+
+fieldset input {
+	display: block;
+	padding: 5px 10px;
+	margin: auto;
+	border-radius: 15px;
+	margin-bottom: 15px;
+	margin-top: 5px;
+	outline: none;
+	border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.buttonlog {
+	font-family: 'Nunito', sans-serif;
+	padding: 10px 15px;
+	margin-top: 25px;
+	border-radius: 25px;
+	border: 1.5px solid rgba(11, 84, 199, 0.86);
+	background-color: white;
+	color:rgba(11, 84, 199, 0.86);
+	transition: 0.3s;
+}
+
+.buttonlog:hover {
+	cursor: pointer;
+	color: white;
+	background-color:rgba(11, 84, 199, 0.86);
+}
+
+/*-------------------------TODOS-----------------------*/
+
+.todo {
+	background-color: #fff;
+	padding: 0px 15px;
+	box-shadow: 0 1px 5px #ddd;
+	border-radius: 5px;
+}
+
+section {
+	padding: 0 25px;
+}
+
+section ul {
+	list-style-type: none;
+	padding: 0 0;
+	margin: 0 0;
+}
+
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.action {
+	text-decoration: none;
+}
+
+header a {
+	padding: 10px 15px;
+	border: 1.5px solid rgba(11, 84, 199, 0.86);
+	background-color: white;
+	color:rgba(11, 84, 199, 0.86);
+	border-radius: 25px;
+	transition: 0.3s;
+}
+
+header a:hover {
+	cursor: pointer;
+	color: white;
+	background-color:rgba(11, 84, 199, 0.86);
+}
+
+/*-----------------------MOVE-------------------------------*/
+
+.todomove {
+	background-color: #fff;
+	padding: 0px 15px;
+	box-shadow: 0 1px 5px #ddd;
+	border-radius: 5px;
+	cursor: move;
+}
+
+/*.todomove.over {*/
+  /*border: 3px dotted #666;*/
+/*}*/
+
+[draggable] {
+	user-select: none;
+}
+
+.container {
+	display: grid;
+	gap: 10px;
+}

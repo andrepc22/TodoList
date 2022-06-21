@@ -13,8 +13,9 @@ def get_db():
             password=current_app.config['DATABASE_PASSWORD'],
             database=current_app.config['DATABASE']
         )
-        g.c = g.db.cursor(dictionary=True)
+        g.c = g.db.cursor(dictionary=True, buffered=True)
     # cuando llamemos a esta función retornará la bd y el cursor
+    # agregamos buffered = True para que fetchone funcione 
     return g.db, g.c
 
 # vamos a crear una función que nos permita cerrar la conexión a la base de datos cada vez que realicemos una petición

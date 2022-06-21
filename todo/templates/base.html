@@ -1,15 +1,48 @@
 <!doctype html>
-<title>{% block title %}{% endblock %} - Todo List</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<head>
+	<title>{% block title %}{% endblock %} - Todo List</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<script>
+		$(document).ready(function(){   
+				$("ul.sortable").sortable({      
+						update: function( event, ui ) {
+								updateOrder();
+						}
+				});  
+		});
+		function updateOrder() {    
+				var item_order = new Array();
+				$('ul.sortable li').each(function() {
+						item_order.push($(this).attr("id"));
+				}); 
+				var order_string = 'order='+item_order;
+				$.ajax({
+						method: "POST",
+						url: "/move",
+						data: order_string,
+						cache: false,
+						success: function(data){    
+								$("#test").html(data);
+						}
+				});
+		}
+	</script>
+</head>
+
 <nav>
 	<h1>Todo List</h1>
 	<ul>
 		{% if g.user %}
-			<li><span>{{ g.user['username'] }}</span></li>
-			<li><a href="{{ url_for('auth.logout') }}">Cerrar sesión</a></li>
+			<li class="userbox"><span>{{ g.user['username'] }}</span></li><li><a href="{{ url_for('auth.logout') }}">Cerrar sesión</a></li>
 		{% else %}
-			<li><a href="{{ url_for('auth.register') }}">Registrarse</a></li>
-			<li><a href="{{ url_for('auth.login') }}">Iniciar Sesión</a></li>
+			<li><a href="{{ url_for('auth.register') }}">Registrarse</a></li><li><a href="{{ url_for('auth.login') }}">Iniciar Sesión</a></li>
 		{% endif %}
 	</ul>
 </nav>

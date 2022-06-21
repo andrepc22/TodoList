@@ -1,14 +1,19 @@
 {% extends 'base.html' %}
+
 {% block header %}
-	<h1>{% block title %}Iniciar sesión{% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
 	<form method="post">
-		<label for="username">Username</label>
-		<input name="username" id="username" required>
-		<label for="password">Password</label>
-		<input type="password" name="password" id="password" required/>
-		<input type="submit" value="Iniciar sesión"/>
+		<fieldset>
+			<legend>
+				<h1>{% block title %}Inicio de sesión{% endblock %}</h1>
+			</legend>
+			<label for="username">Usuario</label>
+			<input name="username" id="username" required>
+			<label for="password">Contraseña</label>
+			<input type="password" name="password" id="password" required/>
+			<input class="buttonlog" type="submit" value="Iniciar sesión"/>
+		</fieldset>
 	</form>
 {% endblock %}
