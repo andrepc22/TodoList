@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
 
 {% block header %}
-<h1>{% block title %}Tus Tareas{% endblock %}</h1>
-	<a class='action' href="{{ url_for('todo.move') }}">Reordena</a>
+<div>
+	<h1>{% block title %}Tus Tareas{% endblock %}</h1>
+</div>
+<div>
+	<a class='action' href="{{ url_for('todo.move') }}">Reordena <span class="material-symbols-outlined">swap_vert</span></a>
 	{% if g.user %}
-		<a class='action' href="{{ url_for('todo.create') }}">Nueva</a>
+	<a class='action' href="{{ url_for('todo.create') }}">Nueva</a>
 	{% endif %}
+</div>
 {% endblock %}
 
 
@@ -13,7 +17,7 @@
 <ul>
 	{% for todo in todos %}
 	<li class="todo">
-		<div>
+		<div class="tarea">
 			<h1>
 				{% if todo['completed'] == 1 %}
 				<del>{{ todo['description'] }}</del>
@@ -21,8 +25,8 @@
 				{{ todo['description'] }}
 				{% endif%}
 			</h1>
-			<div class="about">{{ todo['created_at'].strftime('%Y-%m-%d') }}</div>
-			<a class="action" href="{{ url_for('todo.update', id=todo['id']) }}">Editar</a>
+			<a class="edit" href="{{ url_for('todo.update', id=todo['id']) }}"><span class="material-symbols-outlined">edit</span></a>
+			<span>#{{ todo['category'] }}</span>
 		</div>
 	</li>
 	{% if not loop.last %}

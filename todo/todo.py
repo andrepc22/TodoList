@@ -12,7 +12,7 @@ bp = Blueprint('todo', __name__)
 def index():
     db, c = get_db()
     c.execute(
-        'select t.id, t.description, u.username, t.completed, t.created_at '
+        'select t.id, t.description, u.username, t.completed, t.created_at, t.category '
         'from todo t JOIN user u on t.created_by = u.id where t.created_by = %s order by display_order', (g.user['id'],)
     )
     todos = c.fetchall()
@@ -24,6 +24,8 @@ def index():
 def create():
     if request.method == 'POST':
         description = request.form['description']
+        # category = request.form['category']
+        category = request.form.get('category')
         error = None
 
         if not description:
@@ -34,23 +36,26 @@ def create():
         else:
             db, c = get_db()
             c.execute(
-                'select t.display_order '
+                'select t.display_order, t.id_user '
                 'from todo t JOIN user u on t.created_by = u.id where t.created_by = %s order by display_order desc',
                 (g.user['id'],)
             )
-            display_order = c.fetchone()
-            if display_order is not None :
-                display_order['display_order'] += 1
+            autoincrement = c.fetchone()
+            # print(autoincrement)
+            if autoincrement is not None :
+                autoincrement['display_order'] += 1
+                autoincrement['id_user'] += 1
+                # print(autoincrement['display_order'], autoincrement['id_user'])
                 c.execute(
-                    'insert into todo (description, completed, created_by, display_order)'
-                    ' values (%s, %s, %s, %s)',
-                    (description, False, g.user['id'], display_order['display_order'])
+                    'insert into todo (description, completed, created_by, display_order, id_user, category)'
+                    ' values (%s, %s, %s, %s, %s, %s)',
+                    (description, False, g.user['id'], autoincrement['display_order'], autoincrement['id_user'], category)
                 )
             else:
                 c.execute(
-                    'insert into todo (description, completed, created_by)'
-                    ' values (%s, %s, %s)',
-                    (description, False, g.user['id'])
+                    'insert into todo (description, completed, created_by, category)'
+                    ' values (%s, %s, %s, %s)',
+                    (description, False, g.user['id'], category)
                 )
             db.commit()
             return redirect(url_for('todo.index'))
@@ -62,26 +67,36 @@ def create():
 def move():
     db, c = get_db()
     c.execute(
-        'select t.id, t.description, u.username, t.completed, t.display_order '
+        'select t.id, t.description, u.username, t.completed, t.id_user, t.display_order '
         'from todo t JOIN user u on t.created_by = u.id where t.created_by = %s order by display_order', (g.user['id'],)
     )
     todos = c.fetchall()
-    # for i in todos:
-        # print(i[ "priority" ])
-    print("---------------------")
     if request.method == 'POST':
         getorder = request.form['order']
         order = getorder.split(",")
-        # print(getorder)
-        # print(order)
-        db,c = get_db()
+        print(order, flush=True)
+
+        # prio = []
+        # for j in todos:
+            # prio.append(j['id_user'])
+        # print(prio, flush=True)
+
+        # print(todos[0]['id_user'], flush=True)
+        # for i, j in zip(order, prio):
+            # print(i,j, flush=True)
+            # c.execute(
+                # 'update todo set display_order = %s'
+                # ' where id_user =%s and created_by = %s',
+                # (i, j, g.user['id'])
+            # )
+        count = 0
         for i in order:
+            count += 1
             c.execute(
                 'update todo set display_order = %s'
-                ' where created_by = %s',
-                (i, g.user['id'])
+                ' where id_user =%s and created_by = %s',
+                (i, count, g.user['id'])
             )
-            print(i)
         db.commit()
         return redirect(url_for('todo.index'))
 
@@ -90,7 +105,7 @@ def move():
 def get_todo(id):
     db, c = get_db()
     c.execute(
-        'select t.id, t.description, t.completed, t.created_by, t.created_at, u.username '
+        'select t.id, t.description, t.completed, t.created_by, t.created_at, u.username, t.category '
         'from todo t join user u on t.created_by = u.id where t.id = %s',
         (id,)
     )
@@ -110,6 +125,7 @@ def update(id):
     if request.method == 'POST':
         description = request.form['description']
         completed = True if request.form.get('completed') == 'on' else False
+        category = request.form.get( 'category' )
         error = None
 
         if not description:
@@ -120,9 +136,9 @@ def update(id):
         else:
             db,c = get_db()
             c.execute(
-                'update todo set description = %s, completed = %s'
+                'update todo set description = %s, completed = %s, category = %s'
                 ' where id = %s and created_by = %s',
-                (description, completed, id, g.user['id'])
+                (description, completed, category, id, g.user['id'])
             )
             db.commit()
             return redirect(url_for('todo.index'))

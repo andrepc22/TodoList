@@ -1,18 +1,31 @@
 {% extends 'base.html' %}
 
 {% block header %}
-	<h1>{% block title %}Editar {{ todo['description'] }}{% endblock %}</h1>
+	<h1>{% block title %}Editar{% endblock %}</h1>
+	<a class='action' href="{{ url_for('todo.index') }}">Cancelar</a>
 {% endblock %}
 
 {% block content %}
-	<form method="post">
+	<form class="auth" method="post">
 		<label for ="description">Descripción</label>
 		<input name="description" id="description" value="{{ request.form['description'] or todo['description'] }}" required>
-		<label for="completed">Completado</label>
-		<input type="checkbox" name="completed" id="completed" {% if todo['completed'] == 1 %}checked{% endif %}/>
-		<input type="submit" value="Guardar"/>
+		<div>
+			<label for="category">Categoría</label>
+			<select class="mdb-select md-form colorful-select dropdown-primary" name="category" type="text" id="category" selected="-">
+				<option selected disabled value='{{ request.form.get('category') or todo['category'] }}'>{{ request.form.get('category') or todo['category']}}</option>
+				<option value=NULL>-</option>
+				<option value="Casa">Casa</option>
+				<option value="Trabajo">Trabajo</option>
+				<option value="Universidad">Universidad</option>
+			</select>
+		</div>
+		<div class=check>
+			<label for="completed">Completado</label>
+			<input type="checkbox" name="completed" id="completed" {% if todo['completed'] == 1 %}checked{% endif %}/>
+		</div>
+		<input class="save" type="submit" value="Guardar"/>
 	</form>
-	<form action="{{ url_for('todo.delete', id=todo['id']) }}" method="post">
+	<form class="formdanger" action="{{ url_for('todo.delete', id=todo['id']) }}" method="post">
 		<input class="danger" type="submit" value="Eliminar" onclick="return confirm('Estás seguro que de querer eliminarlo???')"/>
 	</form>
 {% endblock%}

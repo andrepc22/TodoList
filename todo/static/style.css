@@ -10,12 +10,16 @@ nav {
 	overflow: hidden;
 	text-align: center;
 	margin: 0 0;
-	padding-left: 20px;
+	padding-bottom: 10px;
 }
 
 nav h1 {
 	float: left;
-	color: rgba(11, 84, 199, 0.86);
+	color: white;
+	background-color: rgba(11, 84, 199, 0.86);
+	margin: 0 0;
+	padding: 15px 20px;
+	box-shadow: 1px 1px 8px rgba(0,0,0,0.7);
 }
 
 nav ul {
@@ -88,11 +92,11 @@ legend h1 {
 	margin: 0;
 }
 
-form {
-	position: relative;
-}
+/*form {*/
+	/*position: relative;*/
+/*}*/
 
-fieldset label {
+form fieldset label {
 	/*display: relative;*/
 	margin-left: 64px;
 	/*margin-bottom: 10px;*/
@@ -130,19 +134,55 @@ fieldset input {
 
 .todo {
 	background-color: #fff;
-	padding: 0px 15px;
+	/*padding: 0px 15px;*/
 	box-shadow: 0 1px 5px #ddd;
 	border-radius: 5px;
 }
 
 section {
-	padding: 0 25px;
+	padding: 10px 25px;
 }
 
 section ul {
 	list-style-type: none;
 	padding: 0 0;
 	margin: 0 0;
+	display: grid;
+	gap: 10px;
+}
+
+.edit {
+	float: right;
+	text-decoration: none;
+	transition: 0.3s;
+	/*color: rgba(80, 80, 80, 1);*/
+	/*border-radius: 5px;*/
+	color: white;
+}
+
+li {
+	display: block;
+}
+
+li:hover .edit {
+	padding: 0 4px;
+	color: rgba(80, 80, 80, 1);
+	padding-top: 3px;
+	border: 0px solid rgba(0, 0, 0, 0.3);
+	border-radius: 5px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.edit:hover {
+	background-color:rgba(243, 243, 243, 1); 
+}
+
+.tarea {
+	padding: 15px;
+}
+.tarea h1 {
+	margin: 0 0;
+	padding: 5px 0;
 }
 
 header {
@@ -188,7 +228,91 @@ header a:hover {
 	user-select: none;
 }
 
-.container {
+.sortable {
 	display: grid;
 	gap: 10px;
 }
+
+/*-----------------------NUEVATAREA/EDITAR-------------------------------*/
+
+#description {
+	font-family: 'Nunito', sans-serif;
+	border: 0;
+	height: 30px;
+	padding: 5px 15px;
+	border-radius: 5px;
+	box-shadow: 0 1px 5px #ddd;
+	outline: none;
+	width: 450px;
+	display: block;
+	margin-bottom: 10px;
+}
+
+#category {
+	font-family: 'Nunito', sans-serif;
+	border: 0;
+	/*height: 30px;*/
+	padding: 5px 15px;
+	border-radius: 5px;
+	box-shadow: 0 1px 5px #ddd;
+	outline: none;
+	/*width: 450px;*/
+	display: block;
+	margin-bottom: 10px;
+}
+
+.auth label {
+	padding: 10px 0px;
+	display: inline-block;
+}
+
+.save {
+	font-family: 'Nunito', sans-serif;
+	padding: 5px 15px;
+	margin-top: 10px;
+	border-radius: 25px;
+	border: 1.5px solid rgba(11, 84, 199, 0.86);
+	background-color: white;
+	color:rgba(11, 84, 199, 0.86);
+	transition: 0.3s;
+	display: inline-block;
+}
+
+.save:hover {
+	cursor: pointer;
+	color: white;
+	background-color:rgba(11, 84, 199, 0.86);
+}
+
+.danger {
+	font-family: 'Nunito', sans-serif;
+	padding: 5px 15px;
+	margin-top: 10px;
+	border-radius: 25px;
+	border: 1.5px solid rgba(228,7,49,255);
+	background-color: white;
+	color:rgba(228,7,49,255);
+	transition: 0.3s;
+	display: inline-block;
+}
+
+.danger:hover {
+	cursor: pointer;
+	color: white;
+	background-color:rgba(228,7,49,255);
+}
+
+.check{
+	display: block;
+}
+
+.formdanger {
+	margin:auto;
+	display: inline-block;
+}
+
+/*-----------------------ICONOS-------------------------------*/
+/*.material-symbols-outlined {*/
+	/*position: absolute;*/
+/*}*/
+

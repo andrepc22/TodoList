@@ -2,6 +2,8 @@
 
 {% block header %}
 	<h1>{% block title %}Reordena{% endblock %}</h1>
+	<a onclick="saving()" class='save' href="{{ url_for('todo.index') }}">Guardar</a>
+	<a class='action' href="{{ url_for('todo.index') }}">Cancelar</a>
 {% endblock %}
 
 
