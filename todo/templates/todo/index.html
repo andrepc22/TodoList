@@ -7,7 +7,7 @@
 <div>
 	<a class='action' href="{{ url_for('todo.move') }}">Reordena <span class="material-symbols-outlined">swap_vert</span></a>
 	{% if g.user %}
-	<a class='action' href="{{ url_for('todo.create') }}">Nueva</a>
+	<a class='action' href="{{ url_for('todo.create') }}">Nueva Tarea</a>
 	{% endif %}
 </div>
 {% endblock %}
@@ -26,7 +26,9 @@
 				{% endif%}
 			</h1>
 			<a class="edit" href="{{ url_for('todo.update', id=todo['id']) }}"><span class="material-symbols-outlined">edit</span></a>
-			<span>#{{ todo['category'] }}</span>
+				{% if todo['category'] != 'NULL' and todo['category'] != None and todo['category'] != 'None'%}
+				<span class="cate">#{{ todo['category'] }}</span>
+				{% endif %}
 		</div>
 	</li>
 	{% if not loop.last %}

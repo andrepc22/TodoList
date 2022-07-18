@@ -152,9 +152,14 @@ section ul {
 }
 
 .edit {
-	float: right;
+	/*display: grid;*/
+	/*place-items: center;*/
+	margin: 2.8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	text-decoration: none;
-	transition: 0.3s;
+	transition: 0.25s;
 	/*color: rgba(80, 80, 80, 1);*/
 	/*border-radius: 5px;*/
 	color: white;
@@ -178,8 +183,16 @@ li:hover .edit {
 }
 
 .tarea {
+	display: grid;
+	grid-template-rows: repeat(2);
+	grid-template-columns: 1fr 40px;
 	padding: 15px;
 }
+
+.cate {
+
+}
+
 .tarea h1 {
 	margin: 0 0;
 	padding: 5px 0;
@@ -267,6 +280,7 @@ header a:hover {
 }
 
 .save {
+	text-decoration: none;
 	font-family: 'Nunito', sans-serif;
 	padding: 5px 15px;
 	margin-top: 10px;
@@ -312,7 +326,8 @@ header a:hover {
 }
 
 /*-----------------------ICONOS-------------------------------*/
-/*.material-symbols-outlined {*/
+.material-symbols-outlined {
 	/*position: absolute;*/
-/*}*/
+	vertical-align: bottom;
+}
 

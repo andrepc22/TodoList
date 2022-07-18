@@ -11,9 +11,9 @@
 		<input name="description" id="description" value="{{ request.form['description'] or todo['description'] }}" required>
 		<div>
 			<label for="category">Categoría</label>
-			<select class="mdb-select md-form colorful-select dropdown-primary" name="category" type="text" id="category" selected="-">
-				<option selected disabled value='{{ request.form.get('category') or todo['category'] }}'>{{ request.form.get('category') or todo['category']}}</option>
-				<option value=NULL>-</option>
+			<select class="mdb-select md-form colorful-select dropdown-primary" name="category" type="text" id="category">
+				<option selected value='{{ request.form.get('category') or todo['category'] }}'>{{ request.form.get('category') or todo['category'] }}</option>
+				<option value=None>-</option>
 				<option value="Casa">Casa</option>
 				<option value="Trabajo">Trabajo</option>
 				<option value="Universidad">Universidad</option>
@@ -26,6 +26,6 @@
 		<input class="save" type="submit" value="Guardar"/>
 	</form>
 	<form class="formdanger" action="{{ url_for('todo.delete', id=todo['id']) }}" method="post">
-		<input class="danger" type="submit" value="Eliminar" onclick="return confirm('Estás seguro que de querer eliminarlo???')"/>
+		<input class="danger" type="submit" value="Eliminar" onclick="return confirm('¿Estás seguro de querer eliminarlo?')"/>
 	</form>
 {% endblock%}
