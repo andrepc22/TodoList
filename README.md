@@ -1,7 +1,7 @@
 # TodoList
 Aplicación Web - Lista de tareas
 
-Proyecto de aplicación web construído en Python con el framework de Flask
+Proyecto de aplicación web construído en Python con el framework de Flask, con gestión de base de datos MySQL, además de uso de HTML y CSS; todo bajo una arquitectura MVC.
 
 - Registro e inicio de sesión de usuarios
 
