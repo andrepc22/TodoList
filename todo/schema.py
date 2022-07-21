@@ -24,11 +24,3 @@ instructions = [
         );
     """
 ]
-
-# definimos las variables de entorno en la terminal
-# export FLASK_DATABASE_HOST='localhost'
-# export FLASK_DATABASE_PASSWORD='org22+'
-# export FLASK_DATABASE_USER='alceo20'
-# export FLASK_DATABASE='testing'
-
-# password VARCHAR(100) NOT NULL
