@@ -1,0 +1,10 @@
+click==8.0.4
+colorama==0.4.4
+Flask==2.0.3
+itsdangerous==2.1.0
+Jinja2==3.0.3
+MarkupSafe==2.1.0
+mod-wsgi==4.9.1
+mysql-connector-python==8.0.28
+protobuf==3.19.4
+Werkzeug==2.0.3

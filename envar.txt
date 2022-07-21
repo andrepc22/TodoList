@@ -1,6 +1,0 @@
-export FLASK_DATABASE_HOST='localhost'
-export FLASK_DATABASE_PASSWORD='org22+'
-export FLASK_DATABASE_USER='alceo20'
-export FLASK_DATABASE='testing'
-export FLASK_APP=todo
-export FLASK_ENV=development
